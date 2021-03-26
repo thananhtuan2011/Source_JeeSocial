@@ -2,6 +2,10 @@
 // Topbar
 //
 
+.btn-hover:hover{
+	background-color: #bdb8b859 !important;
+  }
+
 .topbar {
 	display: flex;
 	align-items: stretch;
@@ -62,6 +66,7 @@
 			.btn.btn-icon:focus,
 			.btn.btn-icon:hover,
 			.show .btn.btn-icon {
+				
 				background-color: $gray-100 !important;
 			}
 		}

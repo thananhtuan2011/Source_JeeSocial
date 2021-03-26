@@ -157,7 +157,13 @@ export abstract class TableService<T> {
     return this.http.get<any>(url,{ headers: httpHeaders });
   }
 
+LoadMenu(routspst:string):Observable<any>
+{
+  const url = this.API_Social+routspst;
 
+   return this.http.get<any>(url+'/GetMenu');
+  
+}
   getAllNhanvien():any {
         
     return this.http.get<any>(this.API_USERS_URL_PB_NV+'/GetDSNhanVien');
