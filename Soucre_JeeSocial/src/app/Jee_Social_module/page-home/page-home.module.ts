@@ -78,6 +78,12 @@ import { ChooseUserInGroupComponent } from './Group/choose-user-in-group/choose-
 import { QuanlygroupComponent } from './Group/quanlygroup/quanlygroup.component';
 import { EditQuyenComponent } from './Group/edit-quyen/edit-quyen.component';
 import { DanhSachThanhVienComponent } from './Group/danh-sach-thanh-vien/danh-sach-thanh-vien.component';
+import { PopoverTriggerDirective } from './trang-ca-nhan/popover-trigger.directive';
+import { TrangCaNhanComponent } from './trang-ca-nhan/trang-ca-nhan/trang-ca-nhan.component';
+import { BaidangTrangcanhanComponent } from './trang-ca-nhan/baidang-trangcanhan/baidang-trangcanhan.component';
+import { GioithieuComponent } from './trang-ca-nhan/gioithieu/gioithieu.component';
+import { EditTieusuComponent } from './trang-ca-nhan/edit-tieusu/edit-tieusu.component';
+import { UpdateAvtarComponent } from './trang-ca-nhan/update-avtar/update-avtar.component';
 
 
 
@@ -97,6 +103,12 @@ const MY_FORMATS_EDIT: any = {
 }
 @NgModule({
   declarations: [
+    UpdateAvtarComponent,
+    EditTieusuComponent,
+    TrangCaNhanComponent,
+    BaidangTrangcanhanComponent,
+    GioithieuComponent,
+    PopoverTriggerDirective,
     DanhSachThanhVienComponent,
     ActionNotificationComponent,
     InsertThanhvienComponent,
@@ -129,6 +141,8 @@ const MY_FORMATS_EDIT: any = {
   ],
   entryComponents: [TypePostComponent,  TinNhanhComponent, KhenThuongComponent,MediaComponent,MediaTinvanbanComponent,
     EditGroupComponent,
+    UpdateAvtarComponent,
+    EditTieusuComponent,
     ActionNotificationComponent,
     EditQuyenComponent,
     InsertThanhvienComponent,

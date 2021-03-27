@@ -1,3 +1,4 @@
+import { TrangCaNhanModel } from './../../../../Jee_Social_module/page-home/_model/TrangCaNhan.model';
 import { GroupMemberModel } from './../../../../Jee_Social_module/page-home/_model/group_Member.model';
 import { GroupModel } from './../../../../Jee_Social_module/page-home/_model/group.model';
 import { ImageModel } from './../../../../Jee_Social_module/page-home/_model/Img.model';
@@ -47,6 +48,72 @@ export abstract class TableService<T> {
   //   const httpHeaders = this.httpUtils.getHTTPHeaders();
   //   return this.http.post<any>(API + '/addComment', item, { headers: httpHeaders });
   // }
+
+
+  // begin serive trang cá nhân
+  
+  getdataEdit(id_:number,routespst:string): any {
+    const httpHeaders = this.getHttpHeaders();
+    const url = this.API_Social+routespst;
+    return this.http.get<any>(url + `/GetDataEDit?id_baidang=${id_}`, { headers: httpHeaders });
+  }
+  gettrangCaNhan(routespst:string):Observable<any> {
+    const httpHeaders = this.getHttpHeaders();
+    const url = this.API_Social+routespst;
+    return this.http.get<any>(url + `/getTrangCaNhan`, { headers: httpHeaders });
+  }
+  getBaiDangTrangCaNhan(queryParams: QueryParamsModelNewLazy,routespst:string): Observable<QueryResultsModel>{
+    const httpHeaders = this.getHttpHeaders();
+    const httpParams = this.getFindHTTPParams(queryParams);
+    const url = this.API_Social+routespst;
+    return this.http.get<any>(url + `/getDSBaiDangTrangCaNhan`, { headers: httpHeaders,params:  httpParams });
+  }
+
+  getGioiThieu(id_:number,routespst:string): any {
+    const httpHeaders = this.getHttpHeaders();
+    const url = this.API_Social+routespst;
+    return this.http.get<any>(url + `/getGioiThieu?id_user=${id_}`, { headers: httpHeaders });
+  }
+  getRanDomAnh(id_:number,routespst:string): any {
+    const httpHeaders = this.getHttpHeaders();
+    const url = this.API_Social+routespst;
+    return this.http.get<any>(url + `/getRanDoomAnh?id_user=${id_}`, { headers: httpHeaders });
+  }
+
+    ChangeAnhBia(id_:number,_item: ImageModel,routespst:string): Observable<boolean> {
+      const httpHeaders = this.getHttpHeaders();
+      const url = this.API_Social+routespst;
+      return this.http.post<any>(url+`/UpdateAnhBia?id_canhan=${id_}`, _item,{ headers: httpHeaders });
+  }
+
+  ChiaSeBaiDang(id_user:number,id_bd:number,routespst:string): Observable<boolean> {
+    const httpHeaders = this.getHttpHeaders();
+    const url = this.API_Social+routespst;
+    return this.http.post<any>(url+`/ShareBaiDang?id_user=${id_user}&id_baidang=${id_bd}`,{ headers: httpHeaders });
+    
+}
+
+DeleteBaiDangCaNhan(id_:number,routespst:string): Observable<boolean> {
+  const httpHeaders = this.getHttpHeaders();
+    const url = this.API_Social+routespst;
+  return this.http.delete<any>(url+`/deleteBaiDangChiaSe?id_baidangcanhan=${id_}`,{ headers: httpHeaders });
+}
+
+UpdateTieuSu(item:TrangCaNhanModel,routespst:string): Observable<any> {
+  const httpHeaders = this.getHttpHeaders();
+  const url = this.API_Social+routespst;
+return this.http.post<any>(url + '/UpdateTrangCaNhan', item, { headers: httpHeaders });
+}
+
+postAvatar(_item: ImageModel,routespst:string): Observable<any> {
+
+
+  const httpHeaders = this.getHttpHeaders();
+  const url = this.API_Social+routespst;
+return this.http.post<any>(url+`/UpdateAvatarUser`,_item,{ headers: httpHeaders });
+  
+}
+// end trang cá nhân
   getBaiDang_Group(id_group:number,queryParams: QueryParamsModelNewLazy,routespst:string):any {
     const httpHeaders = this.getHttpHeaders();
     const url = this.API_Social+routespst;
