@@ -44,9 +44,13 @@ export class HeaderMenuDynamicComponent implements OnInit, OnDestroy {
     this.subscriptions.push(routerSubscr);
 
     // menu load
-    
+    // const menuSubscr = this.menu.menuConfig$.subscribe(res => {
+    //   this.menuConfig = res;
+    //   console.log('menu load data',res.items);
+    //   this.cdr.detectChanges();
+    // });
     const menuSubscr = this._service.LoadMenu(this._service.rt_loadmenu).subscribe(res => {
-      this.menuConfig = res;
+      this.menuConfig = res.data;
       console.log('menu load data',res.data);
       this.cdr.detectChanges();
     });

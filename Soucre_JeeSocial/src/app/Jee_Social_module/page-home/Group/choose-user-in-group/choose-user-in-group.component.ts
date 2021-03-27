@@ -1,3 +1,4 @@
+import { GroupService } from './../../_services/group.service';
 import { LayoutUtilsService } from './../../../../_metronic/core/utils/layout-utils.service';
 import { AuthService } from './../../../../modules/auth/_services/auth.service';
 
@@ -37,6 +38,7 @@ export class ChooseUserInGroupComponent implements OnInit {
 		public dialog: MatDialog,
 		private layoutUtilsService: LayoutUtilsService,
 		public auth: AuthService,
+		private _service_gr:GroupService,
 		public service_: GroupMemberService,
 		// private sharedService:SharedService,
 		private changeDetectorRefs: ChangeDetectorRef) { }
@@ -46,10 +48,9 @@ export class ChooseUserInGroupComponent implements OnInit {
 	 */
 	getData(){
 			
-		// this.sharedService.id_group.subscribe(sharedata => this.tam = sharedata)
-		// this.id_gr=Number(this.tam);
-		// this.changeDetectorRefs.detectChanges();
-	
+		this._service_gr.id_group$.subscribe(res=>{
+			this.id_gr=res;
+		})
 	
 	  }
 	ngOnInit() {

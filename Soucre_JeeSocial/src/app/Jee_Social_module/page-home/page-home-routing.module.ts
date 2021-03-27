@@ -3,11 +3,17 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoadPageHomeComponent } from './load-page-home/load-page-home.component';
 import { GroupViewComponent } from './Group/group-view/group-view.component';
+import { DanhSachThanhVienComponent } from './Group/danh-sach-thanh-vien/danh-sach-thanh-vien.component';
 
 const routes: Routes = [
+	{
+		path: 'Onlyreadthanhvien/group/:id_group',
+		component: DanhSachThanhVienComponent,
+
+	},	
   {
 			
-		
+
 		path: '',
 		component: PageHomeComponent,
 		children: [

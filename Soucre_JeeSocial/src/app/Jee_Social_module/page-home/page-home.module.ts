@@ -1,4 +1,4 @@
-import { PortletModule } from './../../_metronic/partials/content/general/portlet/portlet.module';
+import { ActionNotificationComponent } from './../../_metronic/partials/content/crud/action-natification/action-notification.component';
 import { ThongdiepService } from './thong-diep/_service_TD/thongdiep.service';
 import { LayoutUtilsService } from './../../_metronic/core/utils/layout-utils.service';
 import { DeleteEntityDialogComponent } from './../../_metronic/partials/content/crud/delete-entity-dialog/delete-entity-dialog.component';
@@ -77,6 +77,7 @@ import { VaiTroGroupComponent } from './Group/vai-tro-group/vai-tro-group.compon
 import { ChooseUserInGroupComponent } from './Group/choose-user-in-group/choose-user-in-group.component';
 import { QuanlygroupComponent } from './Group/quanlygroup/quanlygroup.component';
 import { EditQuyenComponent } from './Group/edit-quyen/edit-quyen.component';
+import { DanhSachThanhVienComponent } from './Group/danh-sach-thanh-vien/danh-sach-thanh-vien.component';
 
 
 
@@ -96,6 +97,8 @@ const MY_FORMATS_EDIT: any = {
 }
 @NgModule({
   declarations: [
+    DanhSachThanhVienComponent,
+    ActionNotificationComponent,
     InsertThanhvienComponent,
     VaiTroGroupComponent,
     ChooseUserInGroupComponent,
@@ -126,6 +129,7 @@ const MY_FORMATS_EDIT: any = {
   ],
   entryComponents: [TypePostComponent,  TinNhanhComponent, KhenThuongComponent,MediaComponent,MediaTinvanbanComponent,
     EditGroupComponent,
+    ActionNotificationComponent,
     EditQuyenComponent,
     InsertThanhvienComponent,
     VaiTroGroupComponent,
@@ -161,7 +165,7 @@ const MY_FORMATS_EDIT: any = {
     //  {useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG},
   ],
   imports: [
-    PortletModule,
+    MatPaginatorModule,
     CommonModule,
     PageHomeRoutingModule,
     FlexLayoutModule,

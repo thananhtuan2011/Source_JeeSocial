@@ -426,7 +426,9 @@
                   <div class="col-md-12 comment-like" style="text-align: start;">
   
                     <span style="margin-left: 10px;" [popover]="myPopover" [popoverOnHover]="true"
-                      [popoverCloseOnMouseOutside]="true">
+                      [popoverCloseOnMouseOutside]="true"
+                  
+                      >
                       <a *ngIf="item.Like" href="javascript:;" class="{{item.Like.title}}"
                         (click)="like(item.Id_BaiDang,0)">
                         <img src="{{item.Like.icon}}" />
