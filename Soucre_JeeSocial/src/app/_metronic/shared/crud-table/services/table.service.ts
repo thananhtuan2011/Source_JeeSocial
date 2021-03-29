@@ -49,7 +49,50 @@ export abstract class TableService<T> {
   //   return this.http.post<any>(API + '/addComment', item, { headers: httpHeaders });
   // }
 
+  CheckFlow(id_canhan:number,routespst:string): any {
+    const httpHeaders = this.getHttpHeaders();
+    const url = this.API_Social+routespst;
+    return this.http.get<any>(url + `/CheckFlow?id_canhan=${id_canhan}`, { headers: httpHeaders });
+  }
 
+
+  InsertFlow(id_canhan:number,routespst:string): Observable<any> {
+    const httpHeaders = this.getHttpHeaders();
+    const url = this.API_Social+routespst;
+    return this.http.post<any>(url + `/addFlow?id_canhan=${id_canhan}`, { headers: httpHeaders });
+  }
+
+  
+  DeleteFlow(id_canhan:number,routespst:string): Observable<any> {
+    const httpHeaders = this.getHttpHeaders();
+    const url = this.API_Social+routespst;
+    return this.http.delete<any>(url + `/DeleteFlow?id_canhan=${id_canhan}`, { headers: httpHeaders });
+  }
+  
+  getFlow(id_canhan:number,routespst:string): any {
+    const httpHeaders = this.getHttpHeaders();
+    const url = this.API_Social+routespst;
+    return this.http.get<any>(url + `/getFlow?id_canhan=${id_canhan}`, { headers: httpHeaders });
+  }
+   
+
+  getTrangCaNhanFlow(id_:number,routespst:string): any {
+    const httpHeaders = this.getHttpHeaders();
+    const url = this.API_Social+routespst;
+    return this.http.get<any>(url + `/getTrangCaNhanFlow?id_user=${id_}`, { headers: httpHeaders });
+  }
+  getBaiDangFlowTrangCaNhan(routespst:string): any {
+    const httpHeaders = this.getHttpHeaders();
+    const url = this.API_Social+routespst;
+    return this.http.get<any>(url + `/getDSBaiDangFlowTrangCaNhan`, { headers: httpHeaders });
+  }
+
+  getGioiThieuFlow(routespst:string): any {
+    
+    const httpHeaders = this.getHttpHeaders();
+    const url = this.API_Social+routespst;
+    return this.http.get<any>(url + `/getGioiThieuFlow`, { headers: httpHeaders });
+  }
   // begin serive trang cá nhân
   
   getdataEdit(id_:number,routespst:string): any {
@@ -74,10 +117,10 @@ export abstract class TableService<T> {
     const url = this.API_Social+routespst;
     return this.http.get<any>(url + `/getGioiThieu?id_user=${id_}`, { headers: httpHeaders });
   }
-  getRanDomAnh(id_:number,routespst:string): any {
+  getRanDomAnh(routespst:string): any {
     const httpHeaders = this.getHttpHeaders();
     const url = this.API_Social+routespst;
-    return this.http.get<any>(url + `/getRanDoomAnh?id_user=${id_}`, { headers: httpHeaders });
+    return this.http.get<any>(url + `/getRanDoomAnh`, { headers: httpHeaders });
   }
 
     ChangeAnhBia(id_:number,_item: ImageModel,routespst:string): Observable<boolean> {

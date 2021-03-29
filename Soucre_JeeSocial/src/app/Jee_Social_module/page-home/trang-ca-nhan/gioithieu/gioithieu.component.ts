@@ -45,7 +45,7 @@ export class GioithieuComponent implements OnInit {
   LoadOneImage()
 
   {
-	this._service.getRanDomAnh(this.id_user_current,this._service.rt_API_TrangCaNhan).subscribe(res=>{
+	this._service.getRanDomAnh(this._service.rt_API_TrangCaNhan).subscribe(res=>{
 	this.list_randomanh=res.data;
 	this.changeDetectorRefs.detectChanges();
 	})

@@ -1,29 +1,38 @@
+import { PageHomeService } from './../page-home/_services/page-home.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatAutocompleteModule, MatBadgeModule, MatButtonModule, MatCardModule, MatCheckboxModule, MatDatepickerModule, MatDialogModule, MatGridListModule, MatIconModule, MatInputModule, MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatProgressBarModule, MatProgressSpinnerModule, MatRadioModule, MatSelectModule, MatSnackBarModule, MatSortModule, MatTableModule, MatTabsModule, MatTooltipModule, MatFormFieldModule, MatChipsModule } from '@angular/material';
 
 import { FlowGioithieuCanhanComponent } from './flow-gioithieu-canhan/flow-gioithieu-canhan.component';
 import { FlowBaidangCanhanComponent } from './flow-baidang-canhan/flow-baidang-canhan.component';
 import { FlowCaNhanComponent } from './flow-ca-nhan.component';
 import { FlowCanhanRoutingModule } from './flow-canhan-routing.module';
 import { DisplayTrangCaNhanComponent } from './display-trang-ca-nhan/display-trang-ca-nhan.component';
-import { NgbModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { PortletModule } from '../../partials/content/general/portlet/portlet.module';
+
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { InlineSVGModule } from 'ng-inline-svg';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { BaiDangService } from '../home/Bai-Dang/_Services/bai-dang.service';
-import { CommentService } from '../home/Bai-Dang/_Services/comment.service';
-import { GroupService } from '../home/Bai-Dang/_Services/group.service';
-import { UploadfileService } from '../home/Bai-Dang/_Services/uploadfile.service';
-import { ThongbaoService } from '../home/Bai-Dang/_Services/thongbao.service';
-import { ChatCaNhanService } from '../home/tool-user-right/chat-ca-nhan-service/chat-ca-nhan.service';
-import { MychatService } from '../MyChat/mychat.service';
-import { TrangCaNhanService } from '../home/trang-ca-nhan/trang-ca-nhan.service';
+
 import { FlowCaNhanService } from './flow-ca-nhan.service';
 import { PopoverModule } from 'ngx-smart-popover';
+import { CommentService } from '../page-home/_services/comment.service';
+import { GroupService } from '../page-home/_services/group.service';
+import { TrangCaNhanService } from '../page-home/_services/trang-ca-nhan.service';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 
 @NgModule({
@@ -37,17 +46,12 @@ import { PopoverModule } from 'ngx-smart-popover';
 
   providers: [
 	
-    BaiDangService,
+    PageHomeService,
    
     CommentService,
     GroupService,
     FlowCaNhanService,
-    // SignalrService
-    UploadfileService,
-    ThongbaoService,
     
-    ChatCaNhanService,
-    MychatService,
     TrangCaNhanService
     
   
@@ -72,30 +76,24 @@ import { PopoverModule } from 'ngx-smart-popover';
 		MatMenuModule,
 		MatSelectModule,
 		MatInputModule,
-		MatTableModule,
-		MatAutocompleteModule,
-		MatRadioModule,
 		
-		MatNativeDateModule,
 		MatProgressBarModule,
 		MatDatepickerModule,
 		MatCardModule,
-		MatPaginatorModule,
-		MatSortModule,
-		MatCheckboxModule,
-		MatProgressSpinnerModule,
-		MatSnackBarModule,
-		MatTabsModule,
+		// MatPaginatorModule,
+		// MatSortModule,
+		// MatCheckboxModule,
+		// MatProgressSpinnerModule,
+		// MatSnackBarModule,
+		// MatTabsModule,
 		MatTooltipModule,
 		MatDialogModule,
 		MatCardModule,
-		MatBadgeModule,
+		,
 		// ng-bootstrap modules
-		NgbTabsetModule,
 	NgbTooltipModule,
 	FormsModule,
 	MatFormFieldModule,
-	PortletModule,
 
 
 

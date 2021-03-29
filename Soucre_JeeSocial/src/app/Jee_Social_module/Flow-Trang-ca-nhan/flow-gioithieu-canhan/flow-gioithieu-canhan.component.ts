@@ -1,5 +1,4 @@
-import { TrangCaNhanService } from './../../home/trang-ca-nhan/trang-ca-nhan.service';
-import { TokenStorage } from './../../../../core/auth/_services/token-storage.service';
+import { TrangCaNhanService } from './../../page-home/_services/trang-ca-nhan.service';
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FlowCaNhanService } from '../flow-ca-nhan.service';
@@ -18,7 +17,6 @@ export class FlowGioithieuCanhanComponent implements OnInit {
   id_user_current:number;
   list_Flow:any[]=[];
   constructor(
-    private tokenStore:TokenStorage,
     private _service:FlowCaNhanService,
     private service_canhan:TrangCaNhanService,
 
@@ -29,10 +27,10 @@ export class FlowGioithieuCanhanComponent implements OnInit {
 
   getCurrentUser() 
 	{
-	  this.tokenStore.getUserData().subscribe(res =>{
+	  this.service_canhan.getUserData().subscribe(res =>{
 	   
 		  this.item= res;
-		  this.id_user_current=res.ID_user;
+		  this.id_user_current=res.Id;
 	 
   
 	  });
@@ -44,7 +42,7 @@ export class FlowGioithieuCanhanComponent implements OnInit {
 
   {
  
-        this._service.getFlow(this.id_user_canhan).subscribe(res=>{
+        this._service.getFlow(this.id_user_canhan,this._service.rt_flow).subscribe(res=>{
           this.list_Flow=res.data;
               this.changeDetectorRefs.detectChanges();
               console.log('Flow_GiiThieu',this.list_Flow);
@@ -61,7 +59,7 @@ export class FlowGioithieuCanhanComponent implements OnInit {
   LoadOneImage()
 
   {
-	this._service.getRanDomAnh().subscribe(res=>{
+	this.service_canhan.getRanDomAnh(this.service_canhan.rt_API_TrangCaNhan).subscribe(res=>{
 	this.list_randomanh=res.data;
 	this.changeDetectorRefs.detectChanges();
 	})

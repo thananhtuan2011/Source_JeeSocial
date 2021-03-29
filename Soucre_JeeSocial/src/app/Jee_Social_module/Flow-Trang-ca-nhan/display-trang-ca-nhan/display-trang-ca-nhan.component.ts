@@ -1,17 +1,17 @@
-import { FlowCaNhanService } from './../flow-ca-nhan.service';
-import { LeavePersonalCBCCModel } from './../../../../core/auth/_models/typepost.model';
-import { TokenStorage } from './../../../../core/auth/_services/token-storage.service';
-import { LayoutUtilsService, MessageType } from './../../../../core/_base/crud/utils/layout-utils.service';
-import { CommentService } from './../../home/Bai-Dang/_Services/comment.service';
+import { ImageModel } from '../../page-home/_model/Img.model';
+import { AuthService } from '../../../modules/auth/_services/auth.service';
+import { LayoutUtilsService } from '../../../_metronic/core/utils/layout-utils.service';
+import { CommentService } from '../../page-home/_services/comment.service';
+import { PageHomeService } from '../../page-home/_services/page-home.service';
+import { TrangCaNhanService } from '../../page-home/_services/trang-ca-nhan.service';
+import { FlowCaNhanService } from '../flow-ca-nhan.service';
 
 
-
-import { AuthService } from './../../../../core/auth/_services/auth.service';
 
 
 // import { CommentEditDialogComponent } from './../comment/comment-edit-dialog/comment-edit-dialog.component';
 import { Component, OnInit, ChangeDetectorRef, Input, ViewChild, ElementRef, HostListener } from '@angular/core';
-import { MatDialog, MatSnackBar } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 
 
 import { DomSanitizer } from '@angular/platform-browser';
@@ -21,26 +21,9 @@ import { BehaviorSubject, Observable, Subject, Subscription } from 'rxjs';
 
 import { HttpClient } from '@angular/common/http';
 import { concatMap, delay, first } from 'rxjs/operators';
-import { MychatService } from '../../MyChat/mychat.service';
-import { ThongbaoService } from '../../home/Bai-Dang/_Services/thongbao.service';
-import { UploadfileService } from '../../home/Bai-Dang/_Services/uploadfile.service';
-import { TranslateService } from '@ngx-translate/core';
-import { BaiDangService } from '../../home/Bai-Dang/_Services/bai-dang.service';
-import { TrangCaNhanService } from '../../home/trang-ca-nhan/trang-ca-nhan.service';
-import { ThongBaoModel } from '../../home/Bai-Dang/Model/ThongBao.model';
-import { TypePostComponent } from '../../home/type-post/type-post.component';
-import { CommentModel } from '../../home/Bai-Dang/Model/comment.model';
-import { ImageModel } from '../../home/Bai-Dang/Model/Img.model';
-import { CommentEditDialogComponent } from '../../home/Comment/comment-edit-dialog/comment-edit-dialog.component';
-import { BaiDangModel } from '../../home/Bai-Dang/Model/Bai-dang.model';
-import { BaidangEditComponent } from '../../home/Bai-Dang/baidang-edit/baidang-edit.component';
-import { DeXuatEditComponent } from '../../home/Bai-Dang/de-xuat-edit/de-xuat-edit.component';
-import { TinNhanhEditComponent } from '../../home/Bai-Dang/tin-nhanh-edit/tin-nhanh-edit.component';
-import { ChaoDonThanhvienEditComponent } from '../../home/Bai-Dang/chao-don-thanhvien-edit/chao-don-thanhvien-edit.component';
-import { KhenThuongEditComponent } from '../../home/Bai-Dang/khen-thuong-edit/khen-thuong-edit.component';
-import { EditTieusuComponent } from '../../home/trang-ca-nhan/edit-tieusu/edit-tieusu.component';
-import { UpdateAvtarComponent } from '../../home/trang-ca-nhan/update-avtar/update-avtar.component';
+
 import { ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -145,17 +128,14 @@ export class DisplayTrangCaNhanComponent implements OnInit {
     private route:ActivatedRoute,
 	public _services_canhan: TrangCaNhanService,
 	public _services_Flow: FlowCaNhanService,
-     public _services: BaiDangService,
+     public _services: PageHomeService,
     private _service_cmt:CommentService,
     private sanitized: DomSanitizer,
 	public dialog: MatDialog,
-	private tokenStore:TokenStorage,
+	// private tokenStore:TokenStorage,
 	private layoutUtilsService: LayoutUtilsService,
 	private translate: TranslateService,
-	private _service_thongbao:ThongbaoService,
-	private _service_file:UploadfileService,
 	private auth:AuthService,
-	private mychat_serviecs:MychatService,
 
 	private http: HttpClient
   ) { }
@@ -164,9 +144,9 @@ export class DisplayTrangCaNhanComponent implements OnInit {
 
   GetCurrentUser() {
     // debugger
-    this.tokenStore.getUserData().subscribe(res =>{
+    this._services.getUserData().subscribe(res =>{
     //   this.item= res;
-      this.id_user=res.ID_user;
+      this.id_user=res.Id;
     });
      
     }
@@ -182,7 +162,7 @@ export class DisplayTrangCaNhanComponent implements OnInit {
 
   LoadTrangCaNhan(id:number)
   {
-      this._services_Flow.getTrangCaNhanFlow(id).subscribe(res=>{
+      this._services_Flow.getTrangCaNhanFlow(id,this._services_Flow.rt_flow).subscribe(res=>{
 		this.listTrangCaNhan=res.data;
 		console.log('list trang ca nhan',this.listTrangCaNhan)
 		this.id_canhan=this.listTrangCaNhan[0].id_canhan;
@@ -200,26 +180,17 @@ export class DisplayTrangCaNhanComponent implements OnInit {
 
    this.loadTTuser();
    this.GetCurrentUser();
-   this.LoadListUserChat();
    this.CheckFlow();
 
   });
   
   }
 
-  LoadListUserChat()
-  {
-        this.mychat_serviecs.GetListUserChat(this.id_user).subscribe(res=>{
-          this.list_userchat=res.data;
-         console.log('Online',this.list_userchat);
-          this.changeDetectorRefs.detectChanges();
-        })
-  }
- 
+
   addFlow()
 
   {
-	this._services_Flow.InsertFlow(this.id_user_canhan).subscribe(res=>{
+	this._services_Flow.InsertFlow(this.id_user_canhan,this._services_Flow.rt_flow).subscribe(res=>{
 		this.checkflow=res.check;
 
 		this. CheckFlow();
@@ -230,7 +201,7 @@ export class DisplayTrangCaNhanComponent implements OnInit {
  XoaFlow()
 
   {
-	this._services_Flow. DeleteFlow(this.id_user_canhan).subscribe(res=>{
+	this._services_Flow. DeleteFlow(this.id_user_canhan,this._services_Flow.rt_flow).subscribe(res=>{
 		this.checkflow=res.check;
 
 		this. CheckFlow();
@@ -241,7 +212,7 @@ export class DisplayTrangCaNhanComponent implements OnInit {
   CheckFlow()
 
   {
-	this._services_Flow.CheckFlow(this.id_user_canhan).subscribe(res=>{
+	this._services_Flow.CheckFlow(this.id_user_canhan,this._services_Flow.rt_flow).subscribe(res=>{
 		this.checkflow=res.check;
 
 		
@@ -452,12 +423,12 @@ export class DisplayTrangCaNhanComponent implements OnInit {
 	reply(id_u:number,index, indexc = -1)
 	{ 
 		
-		this._service_cmt.TagName(id_u).subscribe(res=>{
-				this.list_rep=res.data;	
-				this.dulieu_cmt_child="@"+this.list_rep[0].Username;
-				this.changeDetectorRefs.detectChanges();
+		// this._service_cmt.TagName(id_u).subscribe(res=>{
+		// 		this.list_rep=res.data;	
+		// 		this.dulieu_cmt_child="@"+this.list_rep[0].Username;
+		// 		this.changeDetectorRefs.detectChanges();
 
-		})
+		// })
 
 	
 	
