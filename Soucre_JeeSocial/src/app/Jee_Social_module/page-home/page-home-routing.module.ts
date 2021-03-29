@@ -13,7 +13,7 @@ const routes: Routes = [
 
 	},	
 	{
-		path: 'page_personal',
+		path: 'page_personal/:id',
 		component: TrangCaNhanComponent,
 
 	},
@@ -40,6 +40,7 @@ const routes: Routes = [
 				component: GroupViewComponent,
 
 			},	
+			
 
 			// {
 			// 	path: 'detail/:id',

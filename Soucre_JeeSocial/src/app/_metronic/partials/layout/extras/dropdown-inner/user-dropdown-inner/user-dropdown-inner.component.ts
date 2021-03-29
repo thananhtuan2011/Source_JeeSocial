@@ -33,6 +33,7 @@ export class UserDropdownInnerComponent implements OnInit {
       'extras.user.dropdown.style'
     );
     this.user$ = this.auth.currentUserSubject.asObservable();
+    console.log('tttttt',this.user$)
     // this.getDataUser();
   }
 

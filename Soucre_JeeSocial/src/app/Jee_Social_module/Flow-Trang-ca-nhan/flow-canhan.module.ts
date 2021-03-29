@@ -33,6 +33,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
 @NgModule({
@@ -63,7 +64,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     CommonModule,
     FlowCanhanRoutingModule,
     NgbModule,
-
+	InfiniteScrollModule,
 	MatChipsModule,
 	MatSelectModule,
 	PopoverModule,
@@ -89,22 +90,12 @@ import { MatGridListModule } from '@angular/material/grid-list';
 		MatTooltipModule,
 		MatDialogModule,
 		MatCardModule,
-		,
+
 		// ng-bootstrap modules
 	NgbTooltipModule,
 	FormsModule,
 	MatFormFieldModule,
 
-
-
-
-	
-
-	
-
-
-
-    
     PerfectScrollbarModule,
 	InlineSVGModule,
 	MatGridListModule,

@@ -168,6 +168,8 @@ export class FlowBaidangCanhanComponent implements OnInit {
 	
   
 	
+
+		  
   
 	  LoadData() {
 		// debugger
