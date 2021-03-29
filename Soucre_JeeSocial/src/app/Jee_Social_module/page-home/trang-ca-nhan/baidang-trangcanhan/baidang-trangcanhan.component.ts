@@ -442,7 +442,7 @@ AddComment_Child(item:CommentModel,withBack:boolean){
 					}
 					else
 					{
-						this.loadDataList();
+						// this.loadDataList();
 						this.changeDetectorRefs.detectChanges();
 					}
 				});
@@ -647,7 +647,6 @@ AddComment_Child(item:CommentModel,withBack:boolean){
 		this._service_cmt.like_cmt(id_cmt,type).subscribe(res =>{
 		
 			if (res) {
-				debugger
 		for(let k=0;k<this.list_baidang.length;k++) 
 			{
 
@@ -667,10 +666,7 @@ AddComment_Child(item:CommentModel,withBack:boolean){
 					}
 				}
 			}
-				debugger
-				console.log('1',vitri)
-				console.log('2',vitribd)
-				console.log('3',vitricmt)
+				
 				
 				
 				if(this.list_baidang[vitri].DataBaiDang[vitribd].Coment[vitricmt].Like===null)
@@ -758,7 +754,6 @@ creaFormDelete(id_baidang:number)
 		
 	
 				this._services.DeleteBaidang(id_baidang,this._services.rt_deletebaidang).subscribe(res => {
-					debugger
 					let index_tap=this.list_baidang.findIndex(x=>x.Id_baidang_canhan==id_baidang);
 					let vi=this.list_baidang[index_tap].DataBaiDang.findIndex(x=>x.Id_BaiDang==id_baidang);
 				this.list_baidang[index_tap].DataBaiDang.splice(vi, 1);
@@ -794,8 +789,8 @@ creaFormDelete(id_baidang:number)
 			// const _saveMessage = this.translate.instant(saveMessageTranslateParam);
 			// const _messageType = _item.id_row > 0 ? MessageType.Update : MessageType.Create;
 			const dialogRef = this.dialog.open(BaidangEditComponent, {
-				width: '500px',
-				height:'500px',
+				width: '550px',
+				height:'510px',
 				data: {_item} })
 			
 			dialogRef.afterClosed().subscribe(res => {
@@ -826,13 +821,12 @@ creaFormDelete(id_baidang:number)
 					// var data = Object.assign({}, item);
 					const dialogRef = this.dialog.open(TinNhanhEditComponent, { data:data,
 						
-						width: '500px' });
+						width: '550px' });
 					dialogRef.afterClosed().subscribe(res => {
 						if (res) {
 							item.tinnhanh = res.tinnhanh
 							// this.loadDataList();
 							var tam=Object.assign(res[0]);
-							debugger
 							let index_tap=this.list_baidang.findIndex(x=>x.Id_baidang_canhan===item.Id_BaiDang);
 						
 								this.list_baidang[index_tap].DataBaiDang.splice(index, 1,tam);
@@ -856,7 +850,8 @@ creaFormDelete(id_baidang:number)
 					// var data = Object.assign({}, item);
 					const dialogRef = this.dialog.open(DeXuatEditComponent, { data:data,
 						
-						width: '500px' });
+						width: '550px',
+							height:'500px', });
 					dialogRef.afterClosed().subscribe(res => {
 						if (res) {
 							var tam=Object.assign(res[0]);
@@ -890,8 +885,8 @@ creaFormDelete(id_baidang:number)
 				_item = this.item;
 			  
 			   const dialogRef = this.dialog.open(ChaoDonThanhvienEditComponent, {
-				   width: '500px',
-				   height:'400px',
+				width: '500px',
+				height:'500px',
 				   data: {_item} })
 			   
 			   dialogRef.afterClosed().subscribe(res => {
@@ -933,8 +928,8 @@ creaFormDelete(id_baidang:number)
 				// const _saveMessage = this.translate.instant(saveMessageTranslateParam);
 				// const _messageType = _item.id_row > 0 ? MessageType.Update : MessageType.Create;
 				const dialogRef = this.dialog.open(KhenThuongEditComponent, {
-					width: '700px',
-					height:'500px',
+					width: '650px',
+						height:'500px',
 					data: {_item} })
 				
 				dialogRef.afterClosed().subscribe(res => {
@@ -1411,7 +1406,19 @@ GetCurrentUser() {
 		// xóa cmt trong bài đăng
 	
 				this._services_canhan.DeleteBaiDangCaNhan(idbd_canhan,this._services_canhan.rt_API_TrangCaNhan).subscribe(res => {
-					this.loadDataList();
+					// this.loadDataList();
+					let index_tap=this.list_baidang.findIndex(x=>x.Id_baidang_canhan==idbd_canhan);
+					let vi=this.list_baidang[index_tap].DataBaiDang.findIndex(x=>x.Id_BaiDang==idbd_canhan);
+				this.list_baidang[index_tap].DataBaiDang.splice(vi, 1);
+						
+				this.changeDetectorRefs.detectChanges();
+					if (res && res.status === 1) {
+						this.layoutUtilsService.showActionNotification(_deleteMessage, MessageType.Delete, 4000, true, false, 3000, 'top');
+					}
+					else {
+						this.layoutUtilsService.showActionNotification(res.error.message, MessageType.Read, 9999999999, true, false, 3000, 'top' );
+					}
+				
 
 				});
 			});

@@ -84,6 +84,7 @@ import { BaidangTrangcanhanComponent } from './trang-ca-nhan/baidang-trangcanhan
 import { GioithieuComponent } from './trang-ca-nhan/gioithieu/gioithieu.component';
 import { EditTieusuComponent } from './trang-ca-nhan/edit-tieusu/edit-tieusu.component';
 import { UpdateAvtarComponent } from './trang-ca-nhan/update-avtar/update-avtar.component';
+import { TrangCaNhanService } from './_services/trang-ca-nhan.service';
 
 
 
@@ -174,7 +175,8 @@ const MY_FORMATS_EDIT: any = {
     { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
     { provide: MAT_DATE_FORMATS, useValue:MY_FORMATS_EDIT},
     LayoutUtilsService ,
-    ThongdiepService 
+    ThongdiepService ,
+    TrangCaNhanService
     // {provide: PERFECT_SCROLLBAR_CONFIG},
     //  {useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG},
   ],

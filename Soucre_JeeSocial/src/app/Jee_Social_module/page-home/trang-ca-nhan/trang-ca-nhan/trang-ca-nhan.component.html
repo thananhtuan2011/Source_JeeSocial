@@ -79,7 +79,8 @@
     width: 150px;
     height: 150px;
     background-size: cover;
-    border:3px solid #FFF
+    border:3px solid #FFF;
+    margin-bottom: -20px;
   }
   .avatar_chat {
     border-radius: 50%;
@@ -96,7 +97,9 @@
  .hv
  {
   margin-top: -10px;
-  color:rgb(50, 28, 247)
+  color:rgb(50, 28, 247);
+  margin-bottom: -10px;
+  font-size: 13px;
  }
 
   </style>
@@ -163,27 +166,31 @@
               </ng-template>
             
            
-            <button (click)="UpdateAvtar()" class="camera_avatar" style="position: absolute;" mat-mini-fab aria-label="Example icon-button with a heart icon">
+            <button (click)="UpdateAvtar()" class="camera_avatar" style="position: absolute;" mat-mini-fab  color="primary" aria-label="Example icon-button with a heart icon">
               <mat-icon>camera_alt</mat-icon>
             </button>
               <span *ngIf="image;then save1 ;else save2"></span>
               <ng-template #save1>
                 <button (click)="CloseIMG()" matTooltip="Cancel"  style="float: right; margin-right:150px;background:rgb(235, 233, 233) ;margin-top: -50px;" mat-raised-button >Hủy</button>
-                <button (click)="updateAnhBia()" matTooltip="Save"   style="float: right; margin-right:15px;margin-top: -50px;" mat-raised-button color="accent" ><mat-icon style="margin-right: 5px; font-size: 25px;">save_alt</mat-icon>Lưu</button>
+                <button (click)="updateAnhBia()" matTooltip="Save"   style="float: right; margin-right:15px;margin-top: 80px;" mat-raised-button color="accent" ><mat-icon style="margin-right: 5px; font-size: 25px;">save_alt</mat-icon>Lưu</button>
               </ng-template>
               <ng-template #save2>
-                <button mat-raised-button (click)="hiddenfileinput.click()" matTooltip="Cập nhật ảnh bìa"   style="float: right; margin-right:15px;background:rgb(235, 233, 233) ;margin-top: -50px;" mat-raised-button ><mat-icon style="margin-right: 5px; font-size: 25px;">camera_alt</mat-icon>Chỉnh sửa ảnh bìa</button>
+                <button mat-raised-button (click)="hiddenfileinput.click()" matTooltip="Cập nhật ảnh bìa"   style="float: right; margin-right:15px;background:rgb(235, 233, 233) ;margin-top: -40px;" mat-raised-button ><mat-icon style="margin-right: 5px; font-size: 25px;">camera_alt</mat-icon>Chỉnh sửa ảnh bìa</button>
                 <input type='file' id="PDFInpdd" #hiddenfileinput (change)="onSelectFile_PDF_AnhBia($event)" style="display: none;">
               </ng-template>
+              <div style="background-color: #fff;">
+
           
-            <span style="font-size:20px;font-weight:bold;">{{canhan.user_name}}
+          
+            <span style="font-size:20px;font-weight:bold;color: black;padding-top: 10px;">{{canhan.user_name}}
               
             </span>
             <!--  -->
-            <p >  {{canhan.tieusu}}</p>
+            <p style="    font-size: 12px;
+            color: #151414;" >  {{canhan.tieusu}}</p>
              <a  href="javascript:void(0)" (click)="UpdateTieuSu(canhan,vi)"><p class="hv">Chỉnh sửa</p></a>
 
-
+            </div>
         </div>
         
           </div>
@@ -343,11 +350,11 @@
 
 <div class="container">
   <div class="row">
-    <div  class="col-lg-4">
+    <div  class="col-lg-5">
      
       <kt-gioithieu></kt-gioithieu>
     </div>
-    <div class="col-lg-8">
+    <div class="col-lg-7">
      <kt-baidang-trangcanhan></kt-baidang-trangcanhan>
     </div>
     <!-- <div  style="position:fixed;float: left;">

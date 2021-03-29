@@ -93,7 +93,7 @@ export abstract class TableService<T> {
     
 }
 
-DeleteBaiDangCaNhan(id_:number,routespst:string): Observable<boolean> {
+DeleteBaiDangCaNhan(id_:number,routespst:string): Observable<any> {
   const httpHeaders = this.getHttpHeaders();
     const url = this.API_Social+routespst;
   return this.http.delete<any>(url+`/deleteBaiDangChiaSe?id_baidangcanhan=${id_}`,{ headers: httpHeaders });

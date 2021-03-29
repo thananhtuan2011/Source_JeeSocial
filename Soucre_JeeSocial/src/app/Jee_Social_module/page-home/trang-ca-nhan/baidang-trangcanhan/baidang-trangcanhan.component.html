@@ -36,8 +36,7 @@
   
     .example-card {
       max-width: 565px;
-      margin-top: 15px;
-      margin-left: 20px;
+      margin: 15px auto;
       width: 600px;
   
   
@@ -233,7 +232,7 @@
   
      -->
 
-     <span *ngIf="list_baidang==='';then check2;else check1"></span>
+     <span *ngIf="list_baidang?.length===0;then check2;else check1"></span>
      <ng-template #check2>
 
     </ng-template>
