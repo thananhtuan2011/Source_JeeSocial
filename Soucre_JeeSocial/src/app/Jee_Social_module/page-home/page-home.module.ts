@@ -56,7 +56,6 @@ import { ChaoDonThanhvienEditComponent } from './load-page-home/_component/home-
 import { KhenThuongEditComponent } from './load-page-home/_component/home-edit/khen-thuong-edit/khen-thuong-edit.component';
 import { DeXuatComponent } from './load-page-home/type-post/Template_LoaiBaiDang/de-xuat/de-xuat.component';
 import { DeXuatEditComponent } from './load-page-home/_component/home-edit/de-xuat-edit/de-xuat-edit.component';
-import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { RouterModule } from '@angular/router';
 import { ContentLeftComponent } from './content-left/content-left.component';
 import { ThongDiepComponent } from './thong-diep/thong-diep.component';
@@ -190,7 +189,6 @@ const MY_FORMATS_EDIT: any = {
     NgbModule,
     // MdePopoverModule,
     // PickerModule,
-   NgxMatSelectSearchModule,
     MatChipsModule,
     MatSelectModule,
      PopoverModule,
@@ -205,7 +203,6 @@ const MY_FORMATS_EDIT: any = {
       MatInputModule,
       MatTableModule,
       MatAutocompleteModule,
-      MatRadioModule,
       // AngularEditorModule ,
       MatNativeDateModule,
       MatProgressBarModule,
@@ -216,14 +213,12 @@ const MY_FORMATS_EDIT: any = {
       MatCheckboxModule,
       MatProgressSpinnerModule,
       MatSnackBarModule,
-      MatTabsModule,
       MatTooltipModule,
       MatDialogModule,
       MatCardModule,
       MatBadgeModule,
       // EditorModule,
       // ng-bootstrap modules
-      NgbDropdownModule,
       // NgbTabsetModule,
     NgbTooltipModule,
     FormsModule,

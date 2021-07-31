@@ -1,5 +1,4 @@
 import { GroupService } from './../../../../_services/group.service';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { BaiDangModel } from './../../../../_model/BaiDang.model';
 import { PageHomeService } from './../../../../_services/page-home.service';
 import { LayoutUtilsService, MessageType } from './../../../../../../_metronic/core/utils/layout-utils.service';
@@ -9,7 +8,6 @@ import { Component, OnInit, ChangeDetectorRef, Inject } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import * as moment from 'moment'; 
 import { FormControl } from '@angular/forms';
-import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 
 @Component({
@@ -33,7 +31,6 @@ export class ThongBaoComponent implements OnInit {
   dulieu = new FormControl('');
   id_group = new FormControl('');
   dl: any = `Nhập nội dung`;
-   editor1 = ClassicEditor;
   public groupFilterCtrl: FormControl = new FormControl();
   constructor(
     private dialogRef:MatDialogRef<ThongBaoComponent>,
@@ -215,38 +212,6 @@ getDataShare(){
 
 
 
-  ttconfig: AngularEditorConfig = {
-  
-    editable: true,
-    spellcheck: true,
-    height: '15rem',
-    minHeight: '5rem',
-    placeholder: 'Nhập Nội Dung...',
-    translate: 'no',
-   
  
-    defaultParagraphSeparator: 'p',
-    defaultFontName: 'Arial',
-  
-    toolbarHiddenButtons: [
-      ['bold']
-      ],
-    customClasses: [
-      {
-        name: "quote",
-        class: "quote",
-      },
-      {
-        name: 'redText',
-        class: 'redText'
-      },
-      {
-        name: "titleText",
-        class: "titleText",
-        tag: "h1",
-      },
-    ]
-  };
-
 
 }
